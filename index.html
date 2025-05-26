@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Einsatzbereit! Strategic Procurement Decision-Making Simulation</title>
+    <style>
+        body {font-family: Arial, sans-serif;background: linear-gradient(135deg, #e3f2fd,#bbdefb);padding:20px;color:#0d47a1;}
+        .card {background-color: #ffffff; border-radius: 10px; padding: 20px; margin-bottom: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);}
+        button {padding: 10px 15px; color:white; background-color: #1565c0; border:none; border-radius:3px; cursor:pointer; margin:5px;}
+        button:hover {background-color: #0d47a1;}
+        .hidden {display: none;}
+    </style>
+</head>
+<body>
+    <h1>Einsatzbereit! Strategic Procurement Simulator</h1>
+
+    <div class="card">
+        <p>You're in charge of procurement in unpredictable crises. Choose wisely!</p>
+        <button onclick="newScenario()">New Crisis Scenario</button>
+    </div>
+
+    <div class="card hidden" id="scenarioCard">
+        <h3>Crisis Scenario:</h3>
+        <p id="scenarioDesc"></p>
+        <button onclick="makeDecision('stock')">Safety Stocks</button>
+        <button onclick="makeDecision('pbc')">Performance-Based Contracting (PBC)</button>
+        <button onclick="makeDecision('lccm')">Life-Cycle Cost Management (LCCM)</button>
+        <button onclick="makeDecision('dual')">Dual Sourcing Strategy</button>
+    </div>
+
+    <div class="card hidden" id="resultCard">
+        <h3>Outcome & Analysis:</h3>
+        <p id="resultDesc"></p>
+        <button onclick="newScenario()">Next Scenario</button>
+    </div>
+
+<script>
+const scenarios = [
+    {desc:"Rapid flood disaster requires urgent pump deployment.", good:"stock", reason:"Safety stocks enabled immediate deployment preserving lives and infrastructure."},
+    {desc:"Procure helicopters with decades-long operational support.", good:"lccm", reason:"Life-Cycle Cost Management reduced long-term costs, ensuring consistent availability."},
+    {desc:"Vaccine distribution crisis necessitating agile supply.", good:"pbc", reason:"Performance-Based Contracts incentivized suppliers to prioritize speed and quality."},
+    {desc:"Earthquake with multiple urgent needs requiring redundancy.", good:"dual", reason:"Dual sourcing mitigated risks, maintained supply stability despite disrupted supply chains."}
+];
+let currentScenario={};
+
+function newScenario(){
+    document.getElementById('resultCard').classList.add('hidden');
+    currentScenario=scenarios[Math.floor(Math.random()*scenarios.length)];
+    document.getElementById('scenarioDesc').textContent=currentScenario.desc;
+    document.getElementById('scenarioCard').classList.remove('hidden');
+}
+
+function makeDecision(choice){
+    let feedback;
+    if(choice==currentScenario.good){
+        feedback="Optimal Choice! "+currentScenario.reason;
+    }else{
+        feedback="Suboptimal choice. The best approach would have been: "+strategyExplain(currentScenario.good);
+    }
+    document.getElementById('resultDesc').textContent=feedback;
+    document.getElementById('scenarioCard').classList.add('hidden');
+    document.getElementById('resultCard').classList.remove('hidden');
+}
+
+function strategyExplain(strategy){
+    switch(strategy){
+        case 'stock': return "Safety Stocks - essential for immediate availability in crises.";
+        case 'pbc': return "Performance-Based Contracting - aligns supplier incentives with rapid, quality service.";
+        case 'lccm': return "Life-Cycle Cost Management - optimizes long-term sustainability and cost-effectiveness.";
+        case 'dual': return "Dual Sourcing Strategy - reduces reliance on a single supplier, safeguarding continuity in emergencies.";
+    }
+}
+</script>
+
+</body>
+</html>
