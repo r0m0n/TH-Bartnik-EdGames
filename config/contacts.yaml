@@ -1,0 +1,6 @@
+student_domains:
+  - students.example.edu
+
+safe_recipients:
+  - assistant@example.org
+  - colleague@example.org

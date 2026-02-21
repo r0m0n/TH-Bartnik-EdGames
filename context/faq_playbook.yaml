@@ -1,0 +1,11 @@
+version: 1
+languages:
+  en:
+    meeting_request:
+      template: "Thank you for your message. I can offer {slot_1} or {slot_2}."
+  de:
+    clarification:
+      template: "Vielen Dank für Ihre Nachricht. Könnten Sie bitte {missing_detail} präzisieren?"
+  ja:
+    scheduling:
+      template: "ご連絡ありがとうございます。{slot_1} または {slot_2} はいかがでしょうか。"
