@@ -1,0 +1,18 @@
+app:
+  timezone: Europe/Berlin
+  schedule:
+    - "09:00"
+    - "16:00"
+  default_mode: dry-run
+
+llm:
+  endpoint: http://localhost:1234/v1
+  model: local-model
+  temperatures:
+    classification: 0.2
+    drafting: 0.4
+
+policy:
+  confidence_threshold: 0.88
+  require_approval: true
+  auto_exec_safe: false

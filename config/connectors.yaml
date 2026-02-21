@@ -1,0 +1,16 @@
+email:
+  mode: smtp
+  host: smtp.example.org
+  port: 587
+  username_env: SMTP_USERNAME
+  password_env: SMTP_PASSWORD
+
+google_calendar:
+  enabled: false
+  credentials_path: ~/.config/genai-assistant/gcal-oauth.json
+  calendar_id: primary
+
+asana:
+  enabled: false
+  token_env: ASANA_TOKEN
+  workspace_gid: ""
